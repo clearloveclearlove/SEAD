@@ -19,7 +19,6 @@ SEAD operates in three key stages:
 
 Together, Monte Carlo sampling and semantic-aware density enable SEAD to achieve high accuracy without any surrogate model, robustly capturing LLM memorization behaviors.
 
-## Setup
 
 ## Code Usage
 
