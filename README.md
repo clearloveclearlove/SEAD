@@ -17,7 +17,6 @@ SEAD operates in three key stages:
 3. **Perplexity-Based Membership Inference**
    From the semantic-aware density values, SEAD derives a perplexity score that reflects how ‘surprised’ the model is by the input. Lower perplexity indicates stronger memorization. Finally, we perform membership inference by thresholding this score.
 
-Together, Monte Carlo sampling and semantic-aware density enable SEAD to achieve high accuracy without any surrogate model, robustly capturing LLM memorization behaviors.
 
 
 ## Code Usage
@@ -40,7 +39,7 @@ python main.py \
 For batch experiments, see the provided scripts in the `scripts/` folder, for example:
 
 ```bash
-bash scripts/run_sead_wikimia.sh
+bash scripts/run_sead_on_wikimia.sh
 ```
 
 This will sequentially launch SEAD on multiple target models (e.g., llama2-13b, opt-6.7b, pythia-6.9b, neox-20b, llama2-30b) using the specified sampling settings. 
