@@ -142,7 +142,9 @@ def semantic_sampling_attack(model, tokenizer, text, num_samples=10, temperature
     Returns:
         negative average token score
     """
-    device = device or model.device
+    
+    if not device:
+        device = model.device
     input_ids = torch.tensor(tokenizer.encode(text)).unsqueeze(0).to(device)
     scores = []
     for i in range(1, input_ids.size(1)):
@@ -175,6 +177,7 @@ def semantic_sampling_attack(model, tokenizer, text, num_samples=10, temperature
 
 def run_attack(model, tokenizer, text, ex, args, nli_model=None, nli_tokenizer=None):
     """Apply the semantic sampling attack to a single example."""
+    
     ex["pred"] = {args.estimation_method: semantic_sampling_attack(
         model, tokenizer, text,
         num_samples=args.num_samples,

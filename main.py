@@ -183,7 +183,6 @@ if __name__ == '__main__':
     
     
     # PETAL
-    
     parser.add_argument('--target_model', type=str, default="pythia-160m", help="the model to attack")
     parser.add_argument('--surrogate_model', type=str, default="gpt2-xl")
     parser.add_argument('--embedding_model', type=str, default="all-MiniLM-L12-v2", help="the model used to compute semantic similarity")

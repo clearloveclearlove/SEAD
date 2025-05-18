@@ -4,6 +4,7 @@ class Options():
     def __init__(self):
         self.parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
         self.initialize_parser()
+        
     def initialize_parser(self):
         self.parser.add_argument('--gpu_ids', type=str, default="3", help="the GPUs to use")
         self.parser.add_argument('--target_model', type=str, default="pythia-160m", help="the model to attack")

@@ -348,23 +348,32 @@ def evaluate_attacks(data, model1, model2, embed_model, tok1, tok2, args):
     for i, ex in enumerate(tqdm(data)):
         text = ex['input']
         scores = {}
+        
         if args.attack_method.lower() in ('all','recall'):
             scores['RECALL'] = recall_attack(model1, tok1, text, prefixes, model1.device)
+            
         if args.attack_method.lower() in ('all','ppl'):
             scores['PPL'] = ppl_attack(model1, tok1, text, model1.device)
+            
         if args.attack_method.lower() in ('all','reference'):
             scores['REFERENCE'] = reference_attack(model1, tok1, model2, tok2, text, model1.device)
+            
         if args.attack_method.lower() in ('all','zlib'):
             scores['ZLIB'] = zlib_attack(model1, tok1, text, model1.device)
+            
         if args.attack_method.lower() in ('all','min-k'):
             scores['MIN-K%'] = min_k_prob_attack(model1, tok1, text, model1.device, k=args.min_k_percent)
+            
         if args.attack_method.lower() in ('all','min-k++'):
             scores['MIN-K%++'] = min_k_pp_attack(model1, tok1, text, model1.device, k=args.min_k_percent)
+            
         if args.attack_method.lower() in ('all','neighborhood'):
             neighs = [neigh_data[i*num_neigh+j]['input'] for j in range(num_neigh)]
             scores['NEIGHBORHOOD'] = neighborhood_attack(model1, tok1, text, model1.device, neighbor_texts=neighs)
+            
         if args.attack_method.lower() in ('all','petal') and embed_model:
             scores['PETAL'] = petal_attack(model1, model2, embed_model, tok1, tok2, text, args.decoding)
+            
         ex['pred'] = scores
         all_out.append(ex)
     return all_out

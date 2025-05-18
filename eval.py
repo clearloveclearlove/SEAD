@@ -4,7 +4,7 @@ from sklearn.metrics import auc, roc_curve
 import torch
 def sweep(score, x):
     """
-    Compute a ROC curve and then return the FPR, TPR, AUC, and ACC.
+    Compute a ROC curve and then return the FPR, TPR, AUC, and ACC
     """
     score = np.nan_to_num(score, nan=0.0)
     fpr, tpr, _ = roc_curve(x, -score)

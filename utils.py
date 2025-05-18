@@ -282,6 +282,7 @@ def load_model(name1, name2, device):
         model2 = AutoModelForCausalLM.from_pretrained("Mistral-7B-v0.3", return_dict=True, device_map=device, torch_dtype=torch.float16)
         model2.eval()
         tokenizer2 = AutoTokenizer.from_pretrained("Mistral-7B-v0.3")     
+        
     else:
         """
         You could modify the code here to make it compatible with other models

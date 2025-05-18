@@ -24,8 +24,10 @@ class Sentence_Transformer:
             """
             You could modify the code here to make it compatible with other models
             """
+            
             raise ValueError(f"Model {model_name} is not currently supported!")
             
     def encode(self, prompt):
+        
         embedding = self.model.encode(prompt, normalize_embeddings=True)
         return embedding
