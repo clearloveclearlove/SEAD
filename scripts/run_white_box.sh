@@ -17,7 +17,7 @@ PASS_WINDOW=false   # Set to true to ignore context window limit (may OOM)
 
 for MODEL in llama2-13b opt-6.7b pythia-6.9b neox-20b llama2-30b; do
   echo "Running white-box attacks on $MODEL with WikiMIA-32..."
-  python /home/yibiao/code/MIA/main.py \
+  python main.py \
     --gpu_ids $GPU \
     --target_model $MODEL \
     --surrogate_model $SURROGATE \
