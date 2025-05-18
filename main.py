@@ -143,7 +143,6 @@ def run_attack_on_model(model_name, device_id, args):
         results['method'].append(method)
         results['auroc'].append(f"{auroc:.4f}")
         results['fpr95'].append(f"{fpr95:.4f}")
-        results['tpr01'].append(f"{tpr01:.4f}")
         results['tpr05'].append(f"{tpr05:.4f}")
         results['accuracy'].append(f"{acc:.4f}")
 
