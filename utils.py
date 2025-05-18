@@ -71,13 +71,13 @@ def prepare_dataset(data, length):
         # mimir-dm-13
         name, gram = data.split('-')[1], data.split('-')[2]
         original_non_member = []
-        with open(f'data/MIMIR-ngram-{gram}/non-members/{name}.jsonl', 'r') as f:
+        with open(f'data/MIMIR-ngram-{gram}.8/non-members/{name}.jsonl', 'r') as f:
             for line in f:
                 text = json.loads(line)
                 original_non_member.append(" ".join(text.split()[:length]))
         
         original_member = []
-        with open(f'data/MIMIR-ngram-{gram}/members/{name}.jsonl', 'r') as f:
+        with open(f'data/MIMIR-ngram-{gram}.8/members/{name}.jsonl', 'r') as f:
             for line in f:
                 text = json.loads(line)
                 original_member.append(" ".join(text.split()[:length]))
