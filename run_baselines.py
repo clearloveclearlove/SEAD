@@ -395,7 +395,7 @@ if __name__=='__main__':
 
     # Set output directory based on attack
     suffix = args.attack_method if args.attack_method!='all' else 'all'
-    args.output_dir = f"{args.output_dir}/baselines_copy/{args.data}/{args.target_model}_{args.surrogate_model}_{suffix}"
+    args.output_dir = f"{args.output_dir}/baselines/{args.data}_{args.length}/args.attack_method/{args.target_model}_{args.surrogate_model}_{suffix}"
     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
 
     # Load data and models

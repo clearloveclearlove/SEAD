@@ -68,40 +68,22 @@ def prepare_dataset(data, length):
             raise
     
     elif "mimir" in data:
-        # mimir-dm-13
-        name, gram = data.split('-')[1], data.split('-')[2]
+        # mimir-dm
+        name = data.split('-')[1]
         original_non_member = []
-        with open(f'data/MIMIR-ngram-{gram}.8/non-members/{name}.jsonl', 'r') as f:
+        with open(f'data/MIMIR-ngram/non-members/{name}.jsonl', 'r') as f:
             for line in f:
                 text = json.loads(line)
                 original_non_member.append(" ".join(text.split()[:length]))
         
         original_member = []
-        with open(f'data/MIMIR-ngram-{gram}.8/members/{name}.jsonl', 'r') as f:
+        with open(f'data/MIMIR-ngram/members/{name}.jsonl', 'r') as f:
             for line in f:
                 text = json.loads(line)
                 original_member.append(" ".join(text.split()[:length]))
                 
         original_member = original_member[:len(original_non_member)]
-        testing_samples = 250
-        size = min(testing_samples, len(original_non_member), len(original_member))
-        original_dataset = [{"input":text, "label":1} for text in original_member[:size]] + [{"input":text, "label":0} for text in original_non_member[:size]]
-        
-    else:
-        original_non_member = []
-        with open(f'data/MIMIR-ngram_7/non-members/{data}.jsonl', 'r') as f:
-            for line in f:
-                text = json.loads(line)
-                original_non_member.append(" ".join(text.split()[:length]))
-        
-        original_member = []
-        with open(f'data/MIMIR-ngram_7/members/{data}.jsonl', 'r') as f:
-            for line in f:
-                text = json.loads(line)
-                original_member.append(" ".join(text.split()[:length]))
-        original_member = original_member[:len(original_non_member)]
-
-        testing_samples = 250
+        testing_samples = 350
         size = min(testing_samples, len(original_non_member), len(original_member))
         original_dataset = [{"input":text, "label":1} for text in original_member[:size]] + [{"input":text, "label":0} for text in original_non_member[:size]]
         
@@ -158,7 +140,7 @@ def load_model(name1, name2, device):
         model1.eval()
         tokenizer1 = LlamaTokenizer.from_pretrained("Llama-2-7b-hf")
     elif "llama2-30b" == name1:
-        model1 = LlamaForCausalLM.from_pretrained("llama-30b",device_map="auto", return_dict=True, torch_dtype=torch.float16)
+        model1 = LlamaForCausalLM.from_pretrained("llama-30b",device_map=device, return_dict=True, torch_dtype=torch.float16)
         model1.eval()
         tokenizer1 = LlamaTokenizer.from_pretrained("llama-30b")
     elif "mamba-1.4b" == name1:
@@ -245,7 +227,7 @@ def load_model(name1, name2, device):
         model2.eval()
         tokenizer2 = LlamaTokenizer.from_pretrained("Llama-2-7b-hf")
     elif "llama2-30b" == name2:
-        model2 = LlamaForCausalLM.from_pretrained("llama-30b", return_dict=True, device_map='auto', torch_dtype=torch.float16)
+        model2 = LlamaForCausalLM.from_pretrained("llama-30b", return_dict=True, device_map=device, torch_dtype=torch.float16)
         model2.eval()
         tokenizer2 = LlamaTokenizer.from_pretrained("llama-30b")
     elif "mamba" == name1:
@@ -325,7 +307,7 @@ def calculatePerplexity(sentence, model, tokenizer, device):
         all_prob.append(probability)
     return torch.exp(loss).item(), all_prob, loss.item()
 
-def calculateTextSimilarity(model, embedding_model, tokenizer, text, decoding, device,temperature=0.7):
+def calculateTextSimilarity(model, embedding_model, tokenizer, text, decoding, device, temperature=0.7):
 
     input_ids = torch.tensor(tokenizer.encode(text)).unsqueeze(0)
         

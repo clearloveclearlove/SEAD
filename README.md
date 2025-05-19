@@ -6,6 +6,8 @@ Membership inference attacks (MIAs) aim to determine whether specific data was u
 
 ## Method Overview
 
+![SEAD Workflow](/img/SEAD.png)
+
 SEAD operates in three key stages:
 
 1. **Monte Carlo Sampling of Token Probabilities**
@@ -16,7 +18,6 @@ SEAD operates in three key stages:
 
 3. **Perplexity-Based Membership Inference**
    From the semantic-aware density values, SEAD derives a perplexity score that reflects how ‘surprised’ the model is by the input. Lower perplexity indicates stronger memorization. Finally, we perform membership inference by thresholding this score.
-
 
 
 ## Code Usage

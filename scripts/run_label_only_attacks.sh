@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# run_baseline.sh
+# run_label_only_attacks.sh
 # run PETAL attack on WikiMIA-32
 
 GPU=6

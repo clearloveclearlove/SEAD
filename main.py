@@ -206,7 +206,7 @@ if __name__ == '__main__':
     # Determine method set
     white = ['ppl','zlib','neighborhood','min-k','min-k++','reference','recall','recall_nli']
     black = ['petal','sead']
-    if args.attack_method == 'white':
+    if args.attack_method == 'white_box':
         args.methods = white
     elif args.attack_method == 'black_box':
         args.methods = black

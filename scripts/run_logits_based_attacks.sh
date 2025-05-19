@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# run_whitebox.sh
+# run_logits_based_attacks.sh
 # run white-box attacks on WikiMIA-32
 
 GPU=6
 DATA=WikiMIA
 LEN=32
-METHOD=white
+METHOD=white_box
 SURROGATE=gpt2-xl  # Reference model for ref attack
 
-# White-box specific parameters
+
 MIN_K_PERCENT=20    # k% for Min-K and Min-K++
 NUM_SHOTS=5         # Number of non-member samples for recall
 NUM_PREFIXES=12     # Number of prefixes to select for recall

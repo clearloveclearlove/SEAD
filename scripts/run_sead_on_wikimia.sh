@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# run_sead_on_wikimia.sh
 # SEAD attack on WikiMIA-32
 
 GPU=6
