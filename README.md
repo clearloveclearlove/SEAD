@@ -9,7 +9,7 @@ Membership inference attacks (MIAs) aim to determine whether specific data was u
 SEAD operates in three key stages:
 
 1. **Monte Carlo Sampling of Token Probabilities**
-   For each token position in the input sequence, SEAD queries the target model multiple times (e.g., 50 samples) to collect a distribution of next-token predictions. 
+   For each token position in the input sequence, SEAD queries the target model to obtain multiple samples, thereby collecting a distribution of next-token predictions.
 
 2. **Semantic-Aware Density Computation**
    We compute a density score by aggregating the sampled probability masses, weighting each token by its semantic similarity to the ground-truth token. Specifically, we use an NLI model to measure entailment probabilities between the true token and each sampled token, so that semantically equivalent alternatives contribute to the overall density.
@@ -22,7 +22,7 @@ SEAD operates in three key stages:
 ## Code Usage
 
 This project has been tested under Python 3.9. All required dependencies are listed in requirements.txt.
-Below is an example of running SEAD on the WikiMIA-32 dataset with 50 samples and a temperature of 0.7:
+Below is an example of running SEAD on the WikiMIA-32 dataset with 50 sampling numbers and a temperature of 0.7:
 
 ```bash
 python main.py \
