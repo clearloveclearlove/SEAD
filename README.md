@@ -43,4 +43,4 @@ For batch experiments, see the provided scripts in the `scripts/` folder, for ex
 bash scripts/run_sead_on_wikimia.sh
 ```
 
-This will sequentially launch SEAD on multiple target models (e.g., llama2-13b, opt-6.7b, pythia-6.9b, neox-20b, llama2-30b) using the specified sampling settings. 
+This will sequentially launch SEAD on multiple target models (e.g., llama-13b, opt-6.7b, pythia-6.9b, neox-20b, llama-30b) using the specified sampling settings. 
