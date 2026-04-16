@@ -131,7 +131,7 @@ def load_model(name1, name2, device):
         model1 = GPTNeoXForCausalLM.from_pretrained("pythia-160m-deduped", return_dict=True, device_map=device, torch_dtype=torch.float16)
         model1.eval()
         tokenizer1 = AutoTokenizer.from_pretrained("pythia-160m-deduped")
-    elif "llama2-13b" == name1:
+    elif "llama-13b" == name1:
         model1 = AutoModelForCausalLM.from_pretrained("llama-13b", return_dict=True, device_map=device, torch_dtype=torch.float16)
         model1.eval()
         tokenizer1 = AutoTokenizer.from_pretrained("llama-13b")
@@ -139,7 +139,7 @@ def load_model(name1, name2, device):
         model1 = LlamaForCausalLM.from_pretrained("Llama-2-7b-hf", return_dict=True, device_map=device, torch_dtype=torch.float16)
         model1.eval()
         tokenizer1 = LlamaTokenizer.from_pretrained("Llama-2-7b-hf")
-    elif "llama2-30b" == name1:
+    elif "llama-30b" == name1:
         model1 = LlamaForCausalLM.from_pretrained("llama-30b",device_map=device, return_dict=True, torch_dtype=torch.float16)
         model1.eval()
         tokenizer1 = LlamaTokenizer.from_pretrained("llama-30b")
