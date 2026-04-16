@@ -10,7 +10,7 @@ METHOD=sead
 NUM_SAMPLES=50
 TEMP=0.7
 
-for MODEL in llama2-13b opt-6.7b pythia-6.9b neox-20b llama2-30b; do
+for MODEL in llama-13b opt-6.7b pythia-6.9b neox-20b llama-30b; do
   echo "Running SEAD on $MODEL with WikiMIA..."
   python run_sead.py \
     --gpu_ids $GPU \
